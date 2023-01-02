@@ -18,7 +18,7 @@ Navigate to Web Application
     Page successfully opens
     Click Element                  ${elements}  
     Wait Until Page Contains Element   ${elements_list} 
-    Click Element                       ${elements} 
+    
     
 
     
@@ -40,7 +40,7 @@ Navigate to Web Application
    Click Element                     ${brokenLink} 
    Wait Until Page Contains Element    ${Status_Code}      
    #ketu mund te printohet messazhi System.out.print("This page returned a 500 status code.")
-
+   Close Browser
     
 
 

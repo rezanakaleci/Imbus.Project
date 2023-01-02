@@ -1,4 +1,5 @@
 *** Settings ***
+
 Resource    ../Resources/Imports/imports.resource
 
 Resource    ../Resources/keyword.resource   
@@ -11,30 +12,37 @@ Resource    ../Resources/common.resource
 Interactions Tab web page
     [Documentation]    Interaction tap opens successfully  
     Navigate to Web Application
-    Click Element                      ${interaction_button}
-    Wait until page contains element        ${dragable_buttons}                    
+    Scroll Window
+    Click Element     ${interaction_button}                    
+    Wait until page contains element     ${dragabble_buttons}                          
     Sleep    5s
     
 
 
 
 
-*** Test Cases ***
 Droppable drag me dialog box
   [Documentation]   Verify Drag dialog "Drag me " to the dialog box works successfully
-  Navigate to Web Application    
-  Click Element                        ${interaction_button}
-  Sleep    5s
-  Mouse Down                              ${dragable_buttons}
-  Page Should Contain Element           ${dropable_button}
-  Click Element                       ${dropable_button}
-   Page Should Contain Element         ${Simple_Word}                           
-   Page Should Contain Element           ${Drag_ME}     
-   Drag And Drop                     ${Drag_ME}   ${Drop_Here}                                                
-    Sleep    2s
-   Page Should Contain Element         ${Dropped}
+  Navigate to Web Application   
+   Scroll Window
+   Click Element    ${interaction_button}    
+   Scroll Element Into View    ${dragabble_buttons}
+   Click Element    ${droppable_button}
+   Wait Until Page Contains Element     ${Simple_Word}
+   Mouse Over                           ${Drag_ME}
+   Drag And Drop                        ${Drag_ME}   ${Drop_Here}                         
+   Wait Until Page Contains Element      ${Dropped}
+   Sleep    3s
    Go Back
-   
+     
 
 
- 
+
+
+Invalid Test case
+    [Documentation]    Random choose from Interaction elements
+   Navigate to Web Application   
+   Scroll Window
+   Click Element    ${interaction_button}    
+  Random Select
+  Print the message if it is selected

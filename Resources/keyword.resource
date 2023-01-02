@@ -14,12 +14,15 @@ Page successfully opens
 
 
 
-Selects options from selection list by indexes
-[Arguments]    ${interaction_button}       ${indexes <4>}
-    Selects options from selection list ${interaction_button}  by ${indexes <4>}
 
 Scroll Window
-  Execute Javascript  window.scrollTo(1,1500)  
+  #Execute Javascript  window.scrollTo(1,1500)  
+  Execute JavaScript    window.scrollTo(0, document.body.scrollHeight)
 
+Random Select
+  ${value}=  Evaluate  random.choice(@{Example})  random
+    log to console  \nvalue: ${value}
 
+P
+  
 
